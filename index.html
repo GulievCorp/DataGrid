@@ -6,8 +6,8 @@
 
 
 
-         var a = $.getJSON('https://reqres.in/api/unknown', function(data) {
-             $.each(data.id, function(index, item) {
+         $.getJSON('https://reqres.in/api/unknown', function(data) {
+             $.each(response.data, function(index, item) {
                   var tblRow = "<tr>" + "<td>" + item.name + "</td>" +
                         "<td>" + item.year + "</td>" + "<td>" + item.color + "</td>" + "<td>" + item.pantone_value + "</td>" + "</tr>"
                  $(tblRow).appendTo("#userdata tbody");
