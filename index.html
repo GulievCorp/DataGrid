@@ -1,46 +1,45 @@
 <html>
-<head>
+  <head>
+      <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
 
-</head>
-
-<body>
-
-<div class="wrapper">
-<div class="profile">
-   <table id= "userdata" border="2">
-  <thead>
-            <th>Id</th>
-            <th>Name</th>
-            <th>Year</th>
-            <th>Color</th>
-            <th>Pantone Value</th>
-        </thead>
-      <tbody>
-
-       </tbody>
-   </table>
-
-</div>
-</div>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"> </script>
-
-<script>
-
-    $(function() {
+      <script>
 
 
-   var people = [];
 
-   var a = $.getJSON('Anar.json', function(data) {
-       $.each(data.id, function(i, f) {
-          var tblRow = "<tr>" + "<td>" + f.name + "</td>" +
-           "<td>" + f.year + "</td>" + "<td>" + f.color + "</td>" + "<td>" + f.pantone_value + "</td>" + "</tr>"
-           $(tblRow).appendTo("#userdata tbody");
-     });
+         var a = $.getJSON('https://reqres.in/api/unknown', function(data) {
+             $.each(data.id, function(index, item) {
+                  var tblRow = "<tr>" + "<td>" + item.name + "</td>" +
+                        "<td>" + item.year + "</td>" + "<td>" + item.color + "</td>" + "<td>" + item.pantone_value + "</td>" + "</tr>"
+                 $(tblRow).appendTo("#userdata tbody");
+           });
 
-   });
+         });
 
-});
-</script>
-</body>
+
+      </script>
+  </head>
+
+  <body>
+
+    <div class="wrapper">
+      <div class="profile">
+          <table id= "userdata" border="2">
+            <thead>
+                  <th>Id</th>
+                  <th>Name</th>
+                  <th>Year</th>
+                  <th>Color</th>
+                  <th>Pantone Value</th>
+              </thead>
+            
+            <tbody>
+
+            </tbody>
+          
+          </table>
+
+      </div>
+    </div>
+
+  </body>
 </html>
