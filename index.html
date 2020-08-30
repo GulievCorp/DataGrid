@@ -6,7 +6,7 @@
 
 
 
-         $.getJSON('https://reqres.in/api/unknown', function(response.data) {
+         $.getJSON('https://reqres.in/api/unknown', function(response) {
              $.each(response.data, function(index, item) {
                   var tblRow = "<tr>" + "<td>" + item.name + "</td>" +
                         "<td>" + item.year + "</td>" + "<td>" + item.color + "</td>" + "<td>" + item.pantone_value + "</td>" + "</tr>"
