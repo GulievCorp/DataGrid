@@ -1,0 +1,45 @@
+<html>
+  <head>
+      <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+
+      <script>
+
+
+
+         $.getJSON('https://reqres.in/api/unknown', function(response) {
+             $.each(response.data, function(index, item) {
+                  var tblRow = "<tr>" + "<td>" + item.name + "</td>" +
+                        "<td>" + item.year + "</td>" + "<td>" + item.color + "</td>" + "<td>" + item.pantone_value + "</td>" + "</tr>"
+                 $(tblRow).appendTo("#userdata tbody");
+           });
+
+         });
+
+
+      </script>
+  </head>
+
+  <body>
+
+    <div class="wrapper">
+      <div class="profile">
+          <table id= "userdata" border="2">
+            <thead>
+                  <th>Id</th>
+                  <th>Name</th>
+                  <th>Year</th>
+                  <th>Color</th>
+                  <th>Pantone Value</th>
+              </thead>
+            
+            <tbody>
+
+            </tbody>
+          
+          </table>
+
+      </div>
+    </div>
+
+  </body>
+</html>
