@@ -7,16 +7,26 @@
 
 
 
-        $.getJSON('https://reqres.in/api/unknown?page=1', function(response ) {
+        $.getJSON('https://reqres.in/api/unknown?', function(response ) {
              $.each(response.data, function(index, item) {
                   var tblRow = "<tr>" + "<td>" + item.name + "</td>" +
                         "<td>" + item.year + "</td>" + "<td>" + item.color + "</td>" + "<td>" + item.pantone_value + "</td>" + "</tr>"
                  $(tblRow).appendTo("#userdata tbody");
+                 var docRow = item.page + item.total_page;
+                 $(docRow).appendTo("#userdata");
+
            });
 
          });
 
-        
+        $.getJSON('https://reqres.in/api/unknown?', function(responce){
+          $.each(responce.page, function(index, item){
+            var pagRow = "<li>" + item.page + "</li>"
+            $(pagRow).appendTo(#userdata tbody);
+            
+          })
+        })
+
 
       </script>
   </head>
@@ -43,12 +53,7 @@
       </div>
     </div>
 
-    <ul id="pagination">
-      <li><a href="page2.html">2</a></li>
-      <li><a href="page3.html">3</a></li>
-      <li><a href="page4.html">4</a></li>
-      <li><a href="page5.html">5</a></li>
-    </ul>
+
 
   </body>
 </html>
