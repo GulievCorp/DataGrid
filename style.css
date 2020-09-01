@@ -1,0 +1,11 @@
+#pagination li {
+	text-decoration: none;
+	display: inline;
+	font-size: 24px;
+}
+
+#pagination a {
+	text-decoration: none;
+	display: inline;
+	font-size: 24px;
+}

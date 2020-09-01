@@ -7,7 +7,7 @@
 
 
 
-        $.getJSON('https://reqres.in/api/unknown?page=1', function(response ) {
+        $.getJSON('https://reqres.in/api/unknown?page=2', function(response ) {
              $.each(response.data, function(index, item) {
                   var tblRow = "<tr>" + "<td>" + item.name + "</td>" +
                         "<td>" + item.year + "</td>" + "<td>" + item.color + "</td>" + "<td>" + item.pantone_value + "</td>" + "</tr>"
@@ -51,4 +51,3 @@
     </ul>
 
   </body>
-</html>
