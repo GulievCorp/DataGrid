@@ -4,34 +4,38 @@
       <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
 
       <script>
+        
 
-             function() {
-              return(url = new URL ('https://reqres.in/api/unknown?page=1'))
-             }
-             var array = new array [1, 2];
+        
+        let arrPage = ['https://reqres.in/api/unknown?page=1', 'https://reqres.in/api/unknown?page=2'];
+        
+        let funcPages = function(item) {
+          return(item);
+        }
 
-             array.forEach(item, i, array) {
-              document.write(i + item + arr);
-             }
+        let txtPages = arrPage.forEach(funcPages);
+            document.write(txtPages);
+            
 
 
-        $.getJSON('https://reqres.in/api/unknown?', function(response ) {
+       let pages = function(){ $.getJSON('https://reqres.in/api/unknown?', function(response ) {
              $.each(response.data, function(index, item) {
                   var tblRow = "<tr>" + "<td>" + item.name + "</td>" +
-                        "<td>" + item.year + "</td>" + "<td>" + item.color + "</td>" + "<td>" + item.pantone_value + "</td>" + "</tr>"
+                        "<td>" + item.year + "</td>" + "<td>" + item.color + "</td>" + "<td>" + item.pantone_value + "</td>" + "</tr>" 
                  $(tblRow).appendTo("#userdata tbody");
-                 var docRow = item.page + item.total_page;
-                 $(docRow).appendTo("#userdata");
+                
 
            });
 
          });
-
+}
+pages();
 
       </script>
   </head>
 
   <body>
+
 
     <div class="wrapper">
       <div class="profile">
