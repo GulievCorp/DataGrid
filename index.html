@@ -7,18 +7,11 @@
         
 
         
-        let arrPage = ['https://reqres.in/api/unknown?page=1', 'https://reqres.in/api/unknown?page=2'];
-        
-        let funcPages = function(item) {
-          return(item);
-        }
 
-        let txtPages = arrPage.forEach(funcPages);
-            document.write(txtPages);
-            
+      
 
 
-       let pages = function(){ $.getJSON('https://reqres.in/api/unknown?', function(response ) {
+       let page1 = function(){ $.getJSON('https://reqres.in/api/unknown?page=1?', function(response ) {
              $.each(response.data, function(index, item) {
                   var tblRow = "<tr>" + "<td>" + item.name + "</td>" +
                         "<td>" + item.year + "</td>" + "<td>" + item.color + "</td>" + "<td>" + item.pantone_value + "</td>" + "</tr>" 
@@ -29,7 +22,20 @@
 
          });
 }
-pages();
+       let page2 = function(){ $.getJSON('https://reqres.in/api/unknown?page=2?', function(response ) {
+             $.each(response.data, function(index, item) {
+                  var tblRow = "<tr>" + "<td>" + item.name + "</td>" +
+                        "<td>" + item.year + "</td>" + "<td>" + item.color + "</td>" + "<td>" + item.pantone_value + "</td>" + "</tr>" 
+                 $(tblRow).appendTo("#userdata tbody");
+                
+
+           });
+
+         });
+}
+
+  
+
 
       </script>
   </head>
@@ -39,7 +45,7 @@ pages();
 
     <div class="wrapper">
       <div class="profile">
-          <table id= "userdata" border="2">
+          <table id= "userdata" border="2" >
             <thead>
                   <th>Id</th>
                   <th>Name</th>
@@ -47,13 +53,15 @@ pages();
                   <th>Color</th>
                   <th>Pantone Value</th>
               </thead>
+
             
             <tbody>
 
             </tbody>
           
           </table>
-
+        <input type="button" value="1" id="btn" onclick="page1()">
+        <input type="button" value="2" id="btn" onclick="page2()">
       </div>
     </div>
 
