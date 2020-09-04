@@ -1,71 +1,49 @@
-<html>
-  <link rel="stylesheet" href="style.css">
-  <head>
-      <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
-
-      <script>
-        
-
-        
-
-      
-
-
-       let page1 = function(){ $.getJSON('https://reqres.in/api/unknown?page=1?', function(response ) {
-             $.each(response.data, function(index, item) {
-                  var tblRow = "<tr>" + "<td>" + item.name + "</td>" +
-                        "<td>" + item.year + "</td>" + "<td>" + item.color + "</td>" + "<td>" + item.pantone_value + "</td>" + "</tr>" 
-                 $(tblRow).appendTo("#userdata tbody");
-                
-
-           });
-
-         });
-}
-       let page2 = function(){ $.getJSON('https://reqres.in/api/unknown?page=2?', function(response ) {
-             $.each(response.data, function(index, item) {
-                  var tblRow = "<tr>" + "<td>" + item.name + "</td>" +
-                        "<td>" + item.year + "</td>" + "<td>" + item.color + "</td>" + "<td>" + item.pantone_value + "</td>" + "</tr>" 
-                 $(tblRow).appendTo("#userdata tbody");
-                
-
-           });
-
-         });
-}
-
-  
-
-
-      </script>
-  </head>
-
-  <body>
-
-
-    <div class="wrapper">
-      <div class="profile">
-          <table id= "userdata" border="2" >
-            <thead>
-                  <th>Id</th>
-                  <th>Name</th>
-                  <th>Year</th>
-                  <th>Color</th>
-                  <th>Pantone Value</th>
-              </thead>
-
-            
-            <tbody>
-
-            </tbody>
-          
-          </table>
-        <input type="button" value="1" id="btn" onclick="page1()">
-        <input type="button" value="2" id="btn" onclick="page2()">
-      </div>
-    </div>
-
-
-
-  </body>
-</html>
+<table id="userdata">
+  <tbody></tbody>
+  <tfooter></tfooter>
+</table>
+<div class="nav">
+  <button id="prev">Prev</button>
+  <button id="next">Next</button>
+</div>
+<script type="text/javascript" src="https://unpkg.com/jquery"></script>
+<script type="text/javascript">
+  let currentPage = 1;
+  let totalPages = 0;
+ 
+  const pages = function(page = 1) {
+    $.getJSON('https://reqres.in/api/unknown?page=' + page, function(response) {
+      const html = response.data.reduce((h, item) => {
+        return h += `
+          <tr>
+            <td>${item.name}</td>
+            <td>${item.year}</td>
+            <td>${item.color}</td>
+            <td>${item.pantone_value}</td>
+          </tr>
+        `
+      }, '');
+ 
+      $('#userdata tbody').html(html);
+      totalPages = response.total_pages;
+      $('#prev').prop('disabled', response.page === 1);
+      $('#next').prop('disabled', response.page === totalPages);
+ 
+    });
+  }
+ 
+  $('#prev').click(function() {
+    if (!--currentPage) currentPage = 1;
+ 
+    pages(currentPage);
+  });
+ 
+  $('#next').click(function() {
+    if (++currentPage > totalPages) currentPage = totalPages;
+ 
+    pages(currentPage);
+  });
+ 
+  pages();
+ 
+</script>
